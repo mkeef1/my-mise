@@ -1,0 +1,21 @@
+{
+  "_id" : {"$oid":"b00000000000000000000001"},
+  "recipeOwnerId" : {"$oid":"000000000000000000000001"},
+  "recipeId" : {"$oid":"a00000000000000000000001"},
+  "reviewerId" : {"$oid":"000000000000000000000002"},
+  "rating" : 10,
+  "date" : {"$date":477295200000},
+  "comments" : "This recipe is great! Easy and delicous. This dish made me look like a 5 star chef!"
+
+}
+
+{
+  "_id" : {"$oid":"b00000000000000000000002"},
+  "recipeOwnerId" : {"$oid":"000000000000000000000002"},
+  "recipeId" : {"$oid":"a00000000000000000000002"},
+  "reviewerId" : {"$oid":"000000000000000000000001"},
+  "rating" : 6,
+  "date" : {"$date":477295200000},
+  "comments" : "I thought this was alright.  I would have liked to see some lighter flavors.  Too heavy for me."
+}
+
