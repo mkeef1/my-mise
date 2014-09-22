@@ -1,11 +1,11 @@
 {
-  "name": "mean-template",
+  "name": "my-mise",
   "version": "0.0.0",
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+  "homepage": "https://github.com/mkeef1/my-mise",
   "authors": [
-    "Chyld Medford <chyld.medford@gmail.com>"
+    "Matt Keef <mkeef1@gmail.com>"
   ],
-  "description": "The MEAN Template",
+  "description": "Online Recipe Collection",
   "license": "MIT",
   "dependencies": {
     "angular": "1.3.0-rc.2",
