@@ -1,0 +1,59 @@
+{
+  "_id" : {"$oid":"a00000000000000000000001"},
+  "name" : "Roast Chicken",
+  "ingredients" : ["chicken", "carrots", "onions", "celery", "thyme", "rosemary", "butter", "lemon"],
+  "dateAdded" : {"$date": 477295200000},
+  "directions" : [
+    "1. Preheat oven to 400F",
+    "2. Rinse bird",
+    "3. Chop veggies",
+    "4. Place veggies in bottom of roasting pan",
+    "5. Place bird breast side up on veggies",
+    "6. Place herbs and lemon inside cavity",
+    "7. Coat skin with butter",
+    "8. Sprinkle bird with S and P",
+    "9. Truss Bird",
+    "10. Roast until thermometer reads 165F in breast"
+    ],
+  "photo" : "http://tj-prod-media.s3.amazonaws.com/2011/01/5.jpg",
+  "time" : {"prep":20, "cook":90},
+  "tools" : ["oven", "roasting pan", "butcher's twine", "knife", "cutting board", "thermometer"],
+  "userId" : {"$oid":"000000000000000000000001"},
+  "description" : "Moist meat, crispy skin, lemon and herb aroma",
+  "difficulty" : "easy",
+  "category" : "dinner",
+  "numServings" : 2,
+  "tags" : ["chicken", "mirepoix", "roast", "herbs", "butter"],
+  "notes" : "Do not overcook!"
+}
+
+{
+  "_id" : {"$oid":"a00000000000000000000002"},
+  "name" : "Mashed Potatoes",
+  "ingredients" : ["potatoes", "heavy cream", "butter", "sour cream"],
+  "dateAdded" : {"$date": 477295200000},
+  "directions" : [
+    "1. Peel potatoes,
+    "2. Place potatoes in pot",
+    "3. Add enough cold water to cover the potatoes",
+    "4. Bring to boil",
+    "5. Reduce heat to medium",
+    "6. Cook until a fork can pierce flesh with little resistance",
+    "7. Pour into collender and allow potatoes to drain for 1 minute",
+    "8. Transfer potatoes back to pot.",
+    "9. Add heavy cream, butter and sour cream",
+    "10. Mash until ingredients are combined",
+    "11. Season with S and P"
+    ],
+  "photo" : "http://www.marthastewart.com/sites/files/marthastewart.com/imagecache/wmax-520/ecl/images/content/pub/everyday_food/2004Q4/ef101006_1104_garlicmashed_vert.jpg",
+  "time" : {"prep":10, "cook":30},
+  "tools" : ["stove", "pot", "vegetable pealer", "collender", "potato masher"],
+  "userId" : {"$oid":"000000000000000000000002"},
+  "description" : "Fluffy, rich and flavorful",
+  "difficulty" : "easy",
+  "category" : "side",
+  "numServings" : 2,
+  "tags" : ["potato", "cream", "butter", "mashed"],
+  "notes" : "Make sure not to overcook potatoes.  Also make sure to completely drain water from potatoes."
+}
+
