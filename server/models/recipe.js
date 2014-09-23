@@ -1,8 +1,24 @@
 'use strict';
 
-var Mongo  = require('mongodb');
+var Mongo  = require('mongodb'),
+    _      = require('underscore');
 
-function Recipe(){
+function Recipe(o, userId){
+  this.name = o.name;
+  this.ingredients = o.ingredients;
+  this.dateAdded = new Date();
+  this.directions = o.directions;
+  this.photo = o.photo;
+  this.timeNeeded = {prep:o.prep, cook:o.cook};
+  this.cookId = Mongo.ObjectID(userId);
+  this.description = o.description;
+  this.category = o.category;
+  this.tools = o.tools;
+  this.difficulty = o.difficulty;
+  this.numServings = o.numServings;
+  this.tags = o.tags;
+  this.tags = _.compact(this.tags);
+  this.notes = o.notes;
 }
 
 Object.defineProperty(Recipe, 'collection', {
@@ -17,6 +33,7 @@ Recipe.findByUserId = function(id, cb){
   });
 };
 
+Recipe.create = function(){};
 
 module.exports = Recipe;
 
