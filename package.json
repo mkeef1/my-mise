@@ -38,6 +38,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "^0.7.1",
     "grunt-shell": "^1.1.1",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^1.21.4"
   }
 }

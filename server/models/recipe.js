@@ -6,7 +6,7 @@ var Mongo  = require('mongodb'),
 function Recipe(o, userId){
   this.name = o.name;
   this.ingredients = o.ingredients;
-  this.dateAdded = new Date();
+  this.dateAdded = new Date(o.date);
   this.directions = o.directions;
   this.photo = o.photo;
   this.timeNeeded = {prep:o.prep, cook:o.cook};
@@ -27,13 +27,16 @@ Object.defineProperty(Recipe, 'collection', {
 
 Recipe.findByUserId = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Recipe.collection.findOne({userId:_id}, function(err, obj){
+  Recipe.collection.findOne({cookId:_id}, function(err, obj){
     var recipe = _.extend(recipe, obj);
     cb(err, recipe);
   });
 };
 
-Recipe.create = function(){};
+Recipe.create = function(o, user, cb){
+  var b = new Recipe(o, user);
+  Recipe.collection.save(b, cb);
+};
 
 module.exports = Recipe;
 
