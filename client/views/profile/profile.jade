@@ -11,5 +11,5 @@ h3 Profile
         input.form-control#photo(type='photo', name='photo', ng-model='user.photo', required)
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update Profile
   .col-xs-3
-    {{user.username}}
-    img(ng-src='{{user.photo}}')
+    {{client.username}}
+    img(ng-src='{{client.photo}}')
