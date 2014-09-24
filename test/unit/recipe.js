@@ -7,6 +7,7 @@ var expect    = require('chai').expect,
     Recipe    = require('../../server/models/recipe'),
     User      = require('../../server/models/user'),
     dbConnect = require('../../server/lib/mongodb'),
+    Mongo     = require('mongodb'),
     cp        = require('child_process'),
     db        = 'my-mise-test';
 
@@ -71,9 +72,17 @@ describe('Recipe', function(){
     });
   });
 
+  // working
   /*describe('.deleteById', function(){
-    it('should delete one recipe from user', function(done){
-      var 
+    it('should delete one recipe from collection', function(done){
+      var userId = Mongo.ObjectID('000000000000000000000001');
+      Recipe.deleteById('a00000000000000000000001', userId, function(){
+        Recipe.findById('a00000000000000000000001', function(err, recipe){
+          console.log('recipe>>>>>>', recipe);
+          expect(recipe).to.be.empty;
+          done();
+        });
+      });
     });
   });*/
 });

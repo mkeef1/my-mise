@@ -40,9 +40,9 @@ Recipe.create = function(o, userId, cb){
   Recipe.collection.save(b, cb);
 };
 
-Recipe.deleteById = function(recipeId, cb){
+Recipe.deleteById = function(recipeId, userId, cb){
   var id = Mongo.ObjectID(recipeId);
-  Recipe.collection.findOne({_id:id}, cb);
+  Recipe.collection.remove({_id:id, userId:userId}, cb);
 };
 module.exports = Recipe;
 
