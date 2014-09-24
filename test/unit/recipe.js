@@ -85,5 +85,26 @@ describe('Recipe', function(){
       });
     });
   });*/
+
+  describe('.all', function(){
+    it('should return all recipes', function(done){
+      Recipe.findAll(function(err, recipes){
+        console.log('#recipes>>>', recipes.length);
+        expect(recipes).to.have.length(2);
+        done();
+      });
+    });
+  });
+
+  describe('.findAllByUser', function(){
+    it('should return all a user\'s recipes', function(done){
+      var userId = Mongo.ObjectID('000000000000000000000001');
+      Recipe.findAllByUser('000000000000000000000001', function(err, recipes){
+        console.log('recipes for', userId, '>>>>', recipes);
+        expect(recipes).to.have.length(1);
+        done();
+      });
+    });
+  });
 });
 
