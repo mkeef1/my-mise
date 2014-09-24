@@ -9,7 +9,8 @@ function Recipe(o){
   this.dateAdded = new Date(o.date);
   this.directions = o.directions;
   this.photo = o.photo;
-  this.timeNeeded = {prep:o.prep, cook:o.cook};
+  this.prepTime = o.prepTime;
+  this.cookTime = o.cookTime;
   this.userId = Mongo.ObjectID(o.userId);
   this.description = o.description;
   this.category = o.category;
@@ -39,5 +40,9 @@ Recipe.create = function(o, userId, cb){
   Recipe.collection.save(b, cb);
 };
 
+Recipe.deleteById = function(recipeId, cb){
+  var id = Mongo.ObjectID(recipeId);
+  Recipe.collection.findOne({_id:id}, cb);
+};
 module.exports = Recipe;
 

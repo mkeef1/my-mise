@@ -48,7 +48,8 @@ describe('Recipe', function(){
         dateAdded:'12/12/2014',
         directions:['toast', 'eat'],
         photo:'toast.jpg',
-        timeNeeded:{prep:2, cook:3},
+        prepTime:2,
+        cookTime:3,
         userId:'000000000000000000000001',
         description:'yummy',
         category:'breakfast',
@@ -60,11 +61,20 @@ describe('Recipe', function(){
       User.findById('000000000000000000000001', function(err, user){
         Recipe.create(r, '000000000000000000000001', function(err, recipe){
           console.log('u>>>>', user);
+          console.log('timeNeeded>>>>', r.prepTime + r.cookTime + 'mins');
+          console.log('timeNeeded.prep>>>>', r.prepTime);
+          console.log('timeNeeded>>>>cook', r.cookTime);
           expect(r).to.be.instanceof(Recipe);
           done();
         });
       });
     });
   });
+
+  /*describe('.deleteById', function(){
+    it('should delete one recipe from user', function(done){
+      var 
+    });
+  });*/
 });
 
