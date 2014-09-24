@@ -5,6 +5,7 @@
 
 var expect    = require('chai').expect,
     Recipe    = require('../../server/models/recipe'),
+    User      = require('../../server/models/user'),
     dbConnect = require('../../server/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'my-mise-test';
@@ -48,16 +49,17 @@ describe('Recipe', function(){
         directions:['toast', 'eat'],
         photo:'toast.jpg',
         timeNeeded:{prep:2, cook:3},
-        cookId:'000000000000000000000001',
+        userId:'000000000000000000000001',
         description:'yummy',
         category:'breakfast',
         tools:['knife', 'toaster'],
         difficulty:'easy',
         numServings:1,
         tags:['bread', 'butter', 'jam'],
-        notes:'eat that toast'};)
-      Recipe.create(r, '000000000000000000000001', function(err, recipe){
-        Recipe.create(p, function(err, user){
+        notes:'eat that toast'});
+      User.findById('000000000000000000000001', function(err, user){
+        Recipe.create(r, '000000000000000000000001', function(err, recipe){
+          console.log('u>>>>', user);
           expect(r).to.be.instanceof(Recipe);
           done();
         });

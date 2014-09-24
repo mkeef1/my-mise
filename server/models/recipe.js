@@ -27,7 +27,11 @@ Object.defineProperty(Recipe, 'collection', {
 
 Recipe.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Recipe.collection.findOne({_id:_id}, cb)
+  Recipe.collection.findOne({_id:_id}, function(err, obj){
+    var recipe = Object.create(Recipe.prototype);
+    recipe = _.extend(recipe, obj);
+    cb(err, recipe);
+  });
 };
 
 Recipe.create = function(o, userId, cb){
