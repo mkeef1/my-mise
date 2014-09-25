@@ -4,8 +4,8 @@
 'use strict';
 
 var expect    = require('chai').expect,
-    User      = require('../../app/models/user'),
-    dbConnect = require('../../app/lib/mongodb'),
+    User      = require('../../server/models/user'),
+    dbConnect = require('../../server/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'template-test';
 

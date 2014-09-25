@@ -5,7 +5,9 @@
 
 var expect    = require('chai').expect,
     Recipe    = require('../../server/models/recipe'),
+    User      = require('../../server/models/user'),
     dbConnect = require('../../server/lib/mongodb'),
+    Mongo     = require('mongodb'),
     cp        = require('child_process'),
     db        = 'my-mise-test';
 
@@ -41,28 +43,70 @@ describe('Recipe', function(){
 
   describe('.create', function(){
     it('should create a new recipe', function(done){
-      var r = new Recipe({
+      var t = {
         name:'toast',
         ingredients:['bread', 'butter'],
         dateAdded:'12/12/2014',
         directions:['toast', 'eat'],
         photo:'toast.jpg',
-        timeNeeded:{prep:2, cook:3},
-        cookId:'000000000000000000000001',
+        prepTime:2,
+        cookTime:3,
+        userId:'000000000000000000000001',
         description:'yummy',
         category:'breakfast',
         tools:['knife', 'toaster'],
         difficulty:'easy',
         numServings:1,
         tags:['bread', 'butter', 'jam'],
-        notes:'eat that toast'};)
-      Recipe.create(r, '000000000000000000000001', function(err, recipe){
-        Recipe.create(p, function(err, user){
-          expect(r).to.be.instanceof(Recipe);
+        notes:'eat that toast'},
+      userId = '000000000000000000000001',
+      r = new Recipe(t, userId);
+      Recipe.create(r, userId, function(err, recipe){
+        console.log('u>>>>', userId);
+        console.log('recipeId>>>>', recipe._id);
+        console.log('recipeUser>>>>', recipe.userId);
+        console.log('timeNeeded>>>>', r.prepTime + r.cookTime + 'mins');
+        console.log('timeNeeded.prep>>>>', r.prepTime);
+        console.log('timeNeeded>>>>cook', r.cookTime);
+        expect(r).to.be.instanceof(Recipe);
+        done();
+      });
+    });
+  });
+
+  // working
+  /*describe('.deleteById', function(){
+    it('should delete one recipe from collection', function(done){
+      var userId = Mongo.ObjectID('000000000000000000000001');
+      Recipe.deleteById('a00000000000000000000001', userId, function(){
+        Recipe.findById('a00000000000000000000001', function(err, recipe){
+          console.log('recipe>>>>>>', recipe);
+          expect(recipe).to.be.empty;
           done();
         });
       });
     });
+  });*/
+
+  describe('.all', function(){
+    it('should return all recipes', function(done){
+      Recipe.findAll(function(err, recipes){
+        console.log('#recipes>>>', recipes.length);
+        expect(recipes).to.have.length(2);
+        done();
+      });
+    });
   });
+
+  /*describe('.findAllByUser', function(){
+    it('should return all a user\'s recipes', function(done){
+      var userId = Mongo.ObjectID('000000000000000000000001');
+      Recipe.findAllByUser('000000000000000000000001', function(err, recipes){
+        console.log('recipes for', userId, '>>>>', recipes);
+        expect(recipes).to.have.length(1);
+        done();
+      });
+    });
+  });*/
 });
 

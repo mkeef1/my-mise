@@ -16,7 +16,8 @@
     "Roast until thermometer reads 165F in breast"
     ],
   "photo" : "http://tj-prod-media.s3.amazonaws.com/2011/01/5.jpg",
-  "time" : {"prep":20, "cook":90},
+  "prepTime" : 20,
+  "cookTime" : 90,
   "tools" : ["oven", "roasting pan", "butcher's twine", "knife", "cutting board", "thermometer"],
   "userId" : {"$oid":"000000000000000000000001"},
   "description" : "Moist meat, crispy skin, lemon and herb aroma",
@@ -46,7 +47,8 @@
     "Season with S and P"
     ],
   "photo" : "http://www.marthastewart.com/sites/files/marthastewart.com/imagecache/wmax-520/ecl/images/content/pub/everyday_food/2004Q4/ef101006_1104_garlicmashed_vert.jpg",
-  "time" : {"prep":10, "cook":30},
+  "prepTime" : 10,
+  "cookTime" : 30,
   "tools" : ["stove", "pot", "vegetable pealer", "collender", "potato masher"],
   "userId" : {"$oid":"000000000000000000000002"},
   "description" : "Fluffy, rich and flavorful",
