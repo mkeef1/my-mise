@@ -1,5 +1,7 @@
 ## name of project
 ### Code Badges
+[![Build Status](https://travis-ci.org/mkeef1/my-mise.svg?branch=dev)](https://travis-ci.org/mkeef1/my-mise)
+[![Coverage Status](https://coveralls.io/repos/mkeef1/my-mise/badge.png)](https://coveralls.io/r/mkeef1/my-mise)
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
