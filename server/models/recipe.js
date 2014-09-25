@@ -1,8 +1,7 @@
 'use strict';
 
 var Mongo  = require('mongodb'),
-    _      = require('underscore'),
-    async  = require('async');
+    _      = require('underscore');
 
 function Recipe(o, userId){
   this.name = o.name;
@@ -12,7 +11,7 @@ function Recipe(o, userId){
   this.photo = o.photo;
   this.prepTime = o.prepTime;
   this.cookTime = o.cookTime;
-  this.cookId = Mongo.ObjectID(userId);
+  this.userId = Mongo.ObjectID(userId);
   this.description = o.description;
   this.category = o.category;
   this.tools = o.tools;
@@ -50,16 +49,5 @@ Recipe.findAll = function(cb){
   Recipe.collection.find().toArray(cb);
 };
 
-Recipe.findAllByUser = function(userId, cb){
-  Recipe.collection.find({cookId:userId}).toArray(function(err, recipes){
-    async.map(recipes, iterator, cb);
-  });
-};
 module.exports = Recipe;
 
-function iterator(recipe, cb){
-  require('./user').findById(recipe.cookId, function(err, cook){
-    recipe.ownerName = cook.email;
-    cb(null, recipe);
-  });
-}

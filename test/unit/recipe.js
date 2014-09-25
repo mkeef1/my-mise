@@ -43,7 +43,7 @@ describe('Recipe', function(){
 
   describe('.create', function(){
     it('should create a new recipe', function(done){
-      var r = new Recipe({
+      var t = {
         name:'toast',
         ingredients:['bread', 'butter'],
         dateAdded:'12/12/2014',
@@ -58,16 +58,18 @@ describe('Recipe', function(){
         difficulty:'easy',
         numServings:1,
         tags:['bread', 'butter', 'jam'],
-        notes:'eat that toast'});
-      User.findById('000000000000000000000001', function(err, user){
-        Recipe.create(r, '000000000000000000000001', function(err, recipe){
-          console.log('u>>>>', user);
-          console.log('timeNeeded>>>>', r.prepTime + r.cookTime + 'mins');
-          console.log('timeNeeded.prep>>>>', r.prepTime);
-          console.log('timeNeeded>>>>cook', r.cookTime);
-          expect(r).to.be.instanceof(Recipe);
-          done();
-        });
+        notes:'eat that toast'},
+      userId = '000000000000000000000001',
+      r = new Recipe(t, userId);
+      Recipe.create(r, userId, function(err, recipe){
+        console.log('u>>>>', userId);
+        console.log('recipeId>>>>', recipe._id);
+        console.log('recipeUser>>>>', recipe.userId);
+        console.log('timeNeeded>>>>', r.prepTime + r.cookTime + 'mins');
+        console.log('timeNeeded.prep>>>>', r.prepTime);
+        console.log('timeNeeded>>>>cook', r.cookTime);
+        expect(r).to.be.instanceof(Recipe);
+        done();
       });
     });
   });
@@ -96,7 +98,7 @@ describe('Recipe', function(){
     });
   });
 
-  describe('.findAllByUser', function(){
+  /*describe('.findAllByUser', function(){
     it('should return all a user\'s recipes', function(done){
       var userId = Mongo.ObjectID('000000000000000000000001');
       Recipe.findAllByUser('000000000000000000000001', function(err, recipes){
@@ -105,6 +107,6 @@ describe('Recipe', function(){
         done();
       });
     });
-  });
+  });*/
 });
 
