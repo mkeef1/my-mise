@@ -12,7 +12,7 @@
     .otherwise({redirectTo:'/'});
 
     $httpProvider.interceptors.push('HttpInterceptor');
-    $localForageProvider.config({name:'mean-template', storeName:'cache', version:1.0});
+    $localForageProvider.config({name:'my-mise', storeName:'cache', version:1.0});
   }]);
 })();
 

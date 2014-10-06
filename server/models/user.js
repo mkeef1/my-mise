@@ -41,8 +41,18 @@ User.prototype.update = function(o, cb){
   var properties = Object.keys(o),
       self       = this;
 
+
   properties.forEach(function(property){
-    self[property] = o[property];
+    switch(property){
+      case 'username' :
+        if(o.username){self[property] = o[property];}
+        break;
+      case 'photo' :
+        if(o.photo){self[property] = o[property];}
+        break;
+      default:
+    if(o[property]){self[property] = o[property];}
+    }
   });
 
   User.collection.save(this, function(){
