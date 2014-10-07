@@ -98,15 +98,15 @@ describe('Recipe', function(){
     });
   });
 
-  /*describe('.findAllByUser', function(){
+  describe('.findAllByUserId', function(){
     it('should return all a user\'s recipes', function(done){
-      var userId = Mongo.ObjectID('000000000000000000000001');
-      Recipe.findAllByUser('000000000000000000000001', function(err, recipes){
-        console.log('recipes for', userId, '>>>>', recipes);
+      var userId = Mongo.ObjectID('000000000000000000000002');
+      Recipe.findAllByUserId(userId, function(err, recipes){
+        console.log('#recipes for', userId, '>>>>', recipes.length);
         expect(recipes).to.have.length(1);
         done();
       });
     });
-  });*/
+  });
 });
 

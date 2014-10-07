@@ -49,5 +49,9 @@ Recipe.findAll = function(cb){
   Recipe.collection.find().toArray(cb);
 };
 
+Recipe.findAllByUserId = function(userId, cb){
+  var id = Mongo.ObjectID(userId);
+  Recipe.collection.find({userId:id}).toArray(cb);
+};
 module.exports = Recipe;
 

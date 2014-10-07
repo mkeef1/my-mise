@@ -1,0 +1,30 @@
+h2 Recipes
+
+div
+
+input(type='text', ng-model='title')
+button(ng-click='addYum()') Add Yummly Recipe
+
+div
+
+div(mk-recipe, ng-repeat='recipe in yRecipes', title='{{yRecipe}}')
+
+.col-xs-9
+  h4 My Recipes
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th Name &nbsp
+          a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
+          a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
+        th Date Added &nbsp
+          a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
+          a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
+        th Photo &nbsp
+          a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
+          a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
+    tbody
+      tr(ng-repeat='r in recipes')
+        th {{r.name}}
+        th {{r.dateAdded | date:'MMM dd, yyyy'}}
+        th: img(ng-src='{{r.photo}}')
