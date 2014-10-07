@@ -8,7 +8,10 @@
       return $http.get('/recipes');
     }
 
-    return {show:show};
+    function browse(recipes){
+      return $http.get('/recipes', {recipes:recipes});
+    }
+    return {show:show, browse:browse};
   }]);
 })();
 

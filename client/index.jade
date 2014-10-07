@@ -9,6 +9,7 @@ html(ng-app='my-mise', lang='en')
     link(href='/vendor/fontawesome/css/font-awesome.css', rel='stylesheet')
     link(href='/vendor/toastr/toastr.css', rel='stylesheet')
     link(href='/index.css', rel='stylesheet')
+    link(href='/components/directives/mk-recipe/mk-recipe.css', rel='stylesheet')
   body
     include nav
     .container
@@ -36,5 +37,6 @@ html(ng-app='my-mise', lang='en')
     script(src='/components/factories/home.js')
     script(src='/components/factories/user.js')
     script(src='/components/factories/recipe.js')
+    script(src='/components/directives/mk-recipe/mk-recipe.js')
     script(src='/components/factories/http-interceptor.js')
 

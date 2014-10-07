@@ -8,3 +8,8 @@ exports.index = function(req, res){
   });
 };
 
+exports.browse = function(req, res){
+  Recipe.findAll(function(err, recipes){
+    res.send({recipes:recipes});
+  });
+};

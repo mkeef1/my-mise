@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('my-mise', ['ngRoute', 'LocalForageModule'])
+  angular.module('my-mise', ['ngRoute', 'LocalForageModule', 'mkRecipeModule'])
   .config(['$routeProvider', '$httpProvider', '$localForageProvider', function($routeProvider, $httpProvider, $localForageProvider){
     $routeProvider
     .when('/', {templateUrl:'/views/home/home.html', controller:'HomeCtrl'})

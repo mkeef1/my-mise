@@ -30,6 +30,7 @@ module.exports = function(app, express){
   app.get('/profile', users.show);
   app.post('/profile', users.update);
   app.get('/recipes', recipe.index);
+  app.post('/recipes', recipe.browse);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');
