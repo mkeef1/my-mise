@@ -24,7 +24,7 @@
                         RecipeApi.info($scope.title).then(function(response){
                           debugger;
                           $scope.recipes = response.data;
-                          $scope.topMatch = response.data.matches[0];
+                          $scope.topMatch = $scope.recipes.matches[0];
                         });
                       }];
 

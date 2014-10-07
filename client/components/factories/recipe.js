@@ -8,10 +8,10 @@
       return $http.get('/recipes');
     }
 
-    function browse(recipes){
-      return $http.get('/recipes', {recipes:recipes});
+    function addYum(recipe){
+      return $http.post('/recipes/yRecipes', recipe);
     }
-    return {show:show, browse:browse};
+    return {show:show, addYum:addYum};
   }]);
 })();
 

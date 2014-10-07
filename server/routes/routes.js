@@ -9,6 +9,7 @@ var morgan         = require('morgan'),
     security       = require('../lib/security'),
     home           = require('../controllers/home'),
     recipe         = require('../controllers/recipe'),
+    yum            = require('../controllers/yum'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -30,7 +31,8 @@ module.exports = function(app, express){
   app.get('/profile', users.show);
   app.post('/profile', users.update);
   app.get('/recipes', recipe.index);
-  app.post('/recipes', recipe.browse);
+  app.get('/recipes/yRecipes', yum.index);
+  app.post('/recipes/yRecipes', yum.add);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

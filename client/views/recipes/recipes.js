@@ -12,11 +12,11 @@
       $scope.recipes = response.data.recipes;
     });
 
-    $scope.findRecipes = function(){
-      $scope.yRecipes.push($scope.yRecipe);
-      console.log($scope.yRecipe);
-      console.log($scope.yRecipes);
+    $scope.addYum = function(){
+      $scope.yRecipes.push($scope.recipe);
+      $scope.recipe = null;
     };
+
   }]);
 })();
 
