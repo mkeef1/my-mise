@@ -23,8 +23,9 @@
     o.controller  = ['$scope', 'RecipeApi', function($scope, RecipeApi){
                         RecipeApi.info($scope.title).then(function(response){
                           debugger;
-                          $scope.recipes = response.data;
-                          $scope.topMatch = $scope.recipes.matches[0];
+                          $scope.yumRecipe = response.data.matches[0];
+                          $scope.yumPic    = $scope.yumRecipe.smallImageUrls[0];
+                          $scope.yumName   = $scope.yumRecipe.recipeName;
                         });
                       }];
 
