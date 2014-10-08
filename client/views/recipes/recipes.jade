@@ -2,12 +2,12 @@ h2 Recipes
 
 div
 
-input(type='text', ng-model='yRecipe')
+input(type='text', ng-model='title')
 button(ng-click='addYum()') Add Yummly Recipe
 
 div
 
-div(mk-recipe, ng-repeat='recipe in yRecipes', title='{{yRecipe}}')
+div(mk-recipe, ng-repeat='recipe in yRecipes', title='{{title}}')
 
 .col-xs-9
   h4 My Recipes
