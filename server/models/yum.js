@@ -7,9 +7,8 @@ Object.defineProperty(Yum, 'collection', {
   get: function(){return global.mongodb.collection('yums');}
 });
 
-Yum.create = function(o, userId, cb){
-  var b = new Yum(o, userId);
-  Yum.collection.save(b, cb);
+Yum.create = function(yum, cb){
+  Yum.collection.save(yum, cb);
 };
 
 /*Recipe.deleteById = function(recipeId, userId, cb){

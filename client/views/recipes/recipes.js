@@ -13,8 +13,10 @@
     });
 
     $scope.addYum = function(){
-      $scope.yRecipes.push($scope.yRecipe);
-      $scope.yRecipe = {};
+      Recipe.addYum($scope.yRecipe).then(function(response){
+        $scope.yRecipes.push($scope.yRecipe);
+        $scope.yRecipe = {};
+      });
     };
 
   }]);

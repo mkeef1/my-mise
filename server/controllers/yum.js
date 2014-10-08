@@ -9,7 +9,7 @@ exports.index = function(req, res){
 };
 
 exports.add = function(req, res){
-  Yum.create(req.body, req.user._id, function(err, yum){
+  Yum.create(req.body, function(err, yum){
     res.send({yum:yum});
   });
 };
