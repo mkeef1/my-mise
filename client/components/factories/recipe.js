@@ -8,8 +8,8 @@
       return $http.get('/recipes');
     }
 
-    function addYum(recipe){
-      return $http.post('/recipes/yRecipes', recipe);
+    function addYum(yRecipe){
+      return $http.post('/recipes/yRecipes', yRecipe);
     }
     return {show:show, addYum:addYum};
   }]);

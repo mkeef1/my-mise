@@ -14,7 +14,7 @@
 
     $scope.addYum = function(){
       $scope.yRecipes.push($scope.yRecipe);
-      $scope.yRecipe = null;
+      $scope.yRecipe = {};
     };
 
   }]);
