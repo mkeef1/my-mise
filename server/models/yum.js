@@ -2,17 +2,19 @@
 
 var Mongo = require('mongodb');
 
-function Yum(){
+function Yum(o, user){
+  this.name = o.name;
+  this.ownerId = Mongo.ObjectID(user);
+  this.photo = o.photo;
 }
 
 Object.defineProperty(Yum, 'collection', {
   get: function(){return global.mongodb.collection('yums');}
 });
 
-Yum.create = function(yum, userId, cb){
-  var yumId  = Mongo.ObjectID(yumId),
-      userId = Mongo.ObjectID(userId);
-  Yum.collection.save({_id:yumId, userId:userId}, cb);
+Yum.create = function(o, id, cb){
+  var y  = new Yum(o, id);
+  Yum.collection.save(y, cb);
 };
 
 /*Recipe.deleteById = function(recipeId, userId, cb){
@@ -21,7 +23,7 @@ Yum.create = function(yum, userId, cb){
 };*/
 
 Yum.findAllByUser = function(userId, cb){
-  Yum.collection.find({userId:userId}).toArray(cb);
+  Yum.collection.find({_id:userId}).toArray(cb);
 };
 
 module.exports = Yum;
