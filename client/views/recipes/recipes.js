@@ -7,14 +7,21 @@
     $scope.yRecipes = [];
     $scope.recipe = {};
     $scope.yRecipe = {};
+    $scope.xRecipes = [];
 
+    console.log('yrecipes', $scope.yRecipes);
     Recipe.show().then(function(response){
       $scope.recipes = response.data.recipes;
     });
 
+    Recipe.showYum().then(function(response){
+      $scope.yRecipes = response.data.yums;
+    });
+
     $scope.addYum = function(){
       Recipe.addYum($scope.yRecipe).then(function(response){
-        $scope.yRecipes.push($scope.yRecipe);
+        debugger;
+        $scope.yRecipes.push(response.data.yum);
         $scope.yRecipe = {};
       });
     };

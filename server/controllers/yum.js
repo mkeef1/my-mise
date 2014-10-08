@@ -1,10 +1,9 @@
 'use strict';
 
-var Yum = require('../models/yum'),
-    User = require('../models/user');
+var Yum = require('../models/yum');
 
 exports.index = function(req, res){
-  Yum.findAllByUser(function(err, yums){
+  Yum.findAllByUser(req.user._id, function(err, yums){
     res.send({yums:yums});
   });
 };

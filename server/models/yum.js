@@ -23,7 +23,7 @@ Yum.create = function(o, id, cb){
 };*/
 
 Yum.findAllByUser = function(userId, cb){
-  Yum.collection.find({_id:userId}).toArray(cb);
+  Yum.collection.find({ownerId:userId}).toArray(cb);
 };
 
 module.exports = Yum;
