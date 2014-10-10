@@ -26,6 +26,8 @@
                           $scope.yumRecipe = response.data.matches[0];
                           $scope.yumPic    = $scope.yumRecipe.smallImageUrls[0];
                           $scope.yumName   = $scope.yumRecipe.recipeName;
+                          $scope.yumIngredients   = $scope.yumRecipe.ingredients;
+                          $scope.yumRating = $scope.yumRecipe.rating;
                         });
                       }];
 
