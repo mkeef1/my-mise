@@ -8,10 +8,19 @@
       return $http.get('/recipes');
     }
 
-    function addYum(recipe){
-      return $http.post('/recipes/yRecipes', recipe);
+    function showYum(){
+      return $http.get('/recipes/yRecipes');
     }
-    return {show:show, addYum:addYum};
+
+    function addYum(yRecipe){
+      return $http.post('/recipes/yRecipes', yRecipe);
+    }
+
+    function addRecipe(Recipe){
+      return $http.post('/recipes/recipes', Recipe);
+    }
+
+    return {show:show, addYum:addYum, showYum:showYum, addRecipe:addRecipe};
   }]);
 })();
 

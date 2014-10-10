@@ -1,15 +1,19 @@
 'use strict';
 
-function Yum(){
+var Mongo = require('mongodb');
+
+function Yum(o, user){
+  this.name = o.name;
+  this.ownerId = Mongo.ObjectID(user);
 }
 
 Object.defineProperty(Yum, 'collection', {
   get: function(){return global.mongodb.collection('yums');}
 });
 
-Yum.create = function(o, userId, cb){
-  var b = new Yum(o, userId);
-  Yum.collection.save(b, cb);
+Yum.create = function(o, id, cb){
+  var y  = new Yum(o, id);
+  Yum.collection.save(y, cb);
 };
 
 /*Recipe.deleteById = function(recipeId, userId, cb){
@@ -17,8 +21,8 @@ Yum.create = function(o, userId, cb){
   Recipe.collection.remove({_id:id, userId:userId}, cb);
 };*/
 
-Yum.findAll = function(cb){
-  Yum.collection.find().toArray(cb);
+Yum.findAllByUser = function(userId, cb){
+  Yum.collection.find({ownerId:userId}).toArray(cb);
 };
 
 module.exports = Yum;

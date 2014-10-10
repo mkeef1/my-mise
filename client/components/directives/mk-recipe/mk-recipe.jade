@@ -1,5 +1,7 @@
-div
-  h2 Name: {{yumName}}
-  img(ng-src='{{yumPic}}')
+div {{yumName}}
+div Rating: {{yumRating}}
+ul
+  li(ng-repeat='ingredient in yumIngredients') {{ingredient}}
+img(ng-src='{{yumPic}}')
 
 

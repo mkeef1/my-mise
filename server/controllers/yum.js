@@ -3,7 +3,7 @@
 var Yum = require('../models/yum');
 
 exports.index = function(req, res){
-  Yum.findAll(function(err, yums){
+  Yum.findAllByUser(req.user._id, function(err, yums){
     res.send({yums:yums});
   });
 };
