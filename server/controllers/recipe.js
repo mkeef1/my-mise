@@ -13,3 +13,9 @@ exports.browse = function(req, res){
     res.send({recipes:recipes});
   });
 };
+
+exports.add = function(req, res){
+  Recipe.create(req.body, req.user._id, function(err, recipe){
+    res.send({recipe:recipe});
+  });
+};

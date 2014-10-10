@@ -5,7 +5,6 @@ var Mongo = require('mongodb');
 function Yum(o, user){
   this.name = o.name;
   this.ownerId = Mongo.ObjectID(user);
-  this.photo = o.photo;
 }
 
 Object.defineProperty(Yum, 'collection', {

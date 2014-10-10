@@ -6,7 +6,7 @@ var Mongo  = require('mongodb'),
 function Recipe(o, userId){
   this.name = o.name;
   this.ingredients = o.ingredients;
-  this.dateAdded = new Date(o.date);
+  this.dateAdded = new Date();
   this.directions = o.directions;
   this.photo = o.photo;
   this.prepTime = o.prepTime;
