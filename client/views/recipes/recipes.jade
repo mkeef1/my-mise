@@ -56,12 +56,12 @@ form(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
       label(for='notes') Notes
       textarea.form-control#notes(required, ng-model='recipe.notes', type='textarea', name='notes', placeholder='Don\'t over cook the potatoes!!')
       button(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
-.row
+.row(ng-show='hideyRecipes')
   .col-xs-12
-    div(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}', ng-show='hideyRecipes')
+    div(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}')
 
-.row
-  .col-xs-9(ng-show='hideRecipes')
+.row(ng-show='hideRecipes')
+  .col-xs-9
     h4 My Recipes
     table.table.table-bordered.table-striped
       thead
