@@ -8,7 +8,7 @@ h2 Recipes
     button(ng-click='toggleRecipeForm()') Add Recipe
     button(ng-click='toggleRecipe()') Show/Hide Recipes
 
-form(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
+form#recipeForm(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
   .col-xs-4
     .form-group
       input.form-control#date(ng-model='recipe.dateAdded', type='hidden', name='date', required)
@@ -56,27 +56,13 @@ form(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
       label(for='notes') Notes
       textarea.form-control#notes(required, ng-model='recipe.notes', type='textarea', name='notes', placeholder='Don\'t over cook the potatoes!!')
       button(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
-.row(ng-show='hideyRecipes')
+.row#yRecipes(ng-show='hideyRecipes')
   .col-xs-12
     div(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}')
 
-.row(ng-show='hideRecipes')
-  .col-xs-9
-    h4 My Recipes
-    table.table.table-bordered.table-striped
-      thead
-        tr
-          th Name &nbsp
-            a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
-            a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
-          th Date Added &nbsp
-            a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
-            a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
-          th Photo &nbsp
-            a(href='', ng-click='sortFood = "when"'): span.i.fa.fa-angle-down &nbsp
-            a(href='', ng-click='sortFood = "-when"'): span.i.fa.fa-angle-up
-      tbody
-        tr(ng-repeat='r in recipes')
-          th {{r.name}}
-          th {{r.dateAdded | date:'MMM dd, yyyy'}}
-          th: img(ng-src='{{r.photo}}')
+.row
+  .col-xs-12
+    div#recipes(ng-show='hideRecipes', ng-repeat='r in recipes')
+      h6 {{r.name}}
+      h6 {{r.dateAdded | date:'MMM dd, yyyy'}}
+      img(ng-src='{{r.photo}}')
