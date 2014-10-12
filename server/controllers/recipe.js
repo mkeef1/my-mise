@@ -8,9 +8,9 @@ exports.index = function(req, res){
   });
 };
 
-exports.browse = function(req, res){
-  Recipe.findAll(function(err, recipes){
-    res.send({recipes:recipes});
+exports.info = function(req, res){
+  Recipe.findById(req.params.recipeId, function(err, recipe){
+    res.send({recipe:recipe});
   });
 };
 

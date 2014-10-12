@@ -15,7 +15,7 @@ h2.font Recipes
         input.form-control#date(ng-model='recipe.dateAdded', type='hidden', name='date', required)
       .form-group
         label(for='name') Name
-        input.form-control#name(ng-model='recipe.name', type='text', name='name', placeholder='Mashed Potatoes')
+        input.form-control#name(required, ng-model='recipe.name', type='text', name='name', placeholder='Mashed Potatoes')
       .form-group
         label(for='ingredients') Ingredients
         input.form-control#ingredients(required, ng-model='recipe.ingredients', type='text', name='ingredients', placeholder='milk, flour, eggs')
@@ -34,7 +34,7 @@ h2.font Recipes
         input.form-control#cookTime(required, ng-model='recipe.cookTime', type='number', name='cookTime', placeholder='20')
       .form-group
         label(for='description') Description
-        textarea.form-control#description(required, ng-model='recipe.description', type='textarea', name='description', placeholder='Really Good!  Easy and has great flavor.')
+        textarea.form-control#description(ngRequired='true', ng-model='recipe.description', type='textare', name='description', placeholder='Really Good!  Easy and has great flavor.')
       .form-group
         label(for='category') Category
         select.form-control#category(required, ng-model='recipe.category', type='dropdown', name='category')
@@ -63,6 +63,14 @@ h2.font Recipes
 
   .col-xs-6(ng-show='hideRecipes')
     div#recipes(ng-repeat='r in recipes')
-      h6 {{r.name}}
+      h5 {{r.name}}
       h6 {{r.dateAdded | date:'MMM dd, yyyy'}}
+      button(type='submit', ng-click='showInfo()') Details
       img(ng-src='{{r.photo}}')
+
+.row(ng-show='hideRecipeInfo')
+  .col-xs-12
+    h3 {{recipe.name}}
+    img(ng-src='{{recipe.photo}}')
+    h2 {{recipe.difficulty}}
+

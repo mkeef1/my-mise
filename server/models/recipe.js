@@ -20,6 +20,7 @@ function Recipe(o, userId){
   this.tags = o.tags;
   this.tags = _.compact(this.tags);
   this.notes = o.notes;
+  this.reviews = [];
 }
 
 Object.defineProperty(Recipe, 'collection', {
@@ -53,5 +54,7 @@ Recipe.findAllByUserId = function(userId, cb){
   var id = Mongo.ObjectID(userId);
   Recipe.collection.find({userId:id}).toArray(cb);
 };
+
+
 module.exports = Recipe;
 

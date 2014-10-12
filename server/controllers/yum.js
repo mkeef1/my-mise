@@ -11,5 +11,6 @@ exports.index = function(req, res){
 exports.add = function(req, res){
   Yum.create(req.body, req.user._id, function(err, yum){
     res.send({yum:yum});
+    res.status(200).end();
   });
 };

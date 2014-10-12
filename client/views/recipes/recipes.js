@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('my-mise')
-  .controller('RecipesCtrl', ['$scope', 'Recipe', function($scope, Recipe){
+  .controller('RecipesCtrl', ['$scope', '$routeParams', 'Recipe', function($scope, $routeParams, Recipe){
     $scope.recipeCategories = ['Breakfast', 'Lunch', 'Dinner', 'Side', 'Condiment', 'Beverage'];
     $scope.difficulties = ['Easy', 'Medium', 'Hard'];
     $scope.recipes = [];
@@ -11,11 +11,11 @@
     $scope.yRecipe = {};
     $scope.recipe.dateAdded = new Date();
 
-    Recipe.show($scope.recipes).then(function(response){
+    Recipe.show().then(function(response){
       $scope.recipes = response.data.recipes;
     });
 
-    Recipe.showYum($scope.yums).then(function(response){
+    Recipe.showYum().then(function(response){
       $scope.yRecipes = response.data.yums;
     });
 
@@ -23,18 +23,21 @@
       $scope.hideyRecipes = !!!$scope.hideyRecipes;
       $scope.hideRecipes = false;
       $scope.hideRecipeForm = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.toggleRecipe = function(){
       $scope.hideRecipes = !!!$scope.hideRecipes;
       $scope.hideyRecipes = false;
       $scope.hideRecipeForm = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.toggleRecipeForm = function(){
       $scope.hideRecipeForm = !!!$scope.hideRecipeForm;
       $scope.hideyRecipes = false;
       $scope.hideRecipes = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.addYum = function(){
@@ -50,6 +53,19 @@
         $scope.recipe = {};
         $scope.hideyRecipes = false;
         $scope.hideRecipes = false;
+        $scope.hideRecipeInfo = false;
+      });
+    };
+
+    $scope.showInfo = function(){
+      Recipe.getInfo($routeParams.id).then(function(response){
+        $scope.recipe = response.data.recipe;
+        debugger;
+        $scope.hideRecipeInfo = !!!$scope.hideRecipeInfo;
+        $scope.hideyRecipes = false;
+        $scope.hideRecipes = false;
+        $scope.hideRecipeForm = false;
+        $scope.recipe = {};
       });
     };
   }]);
