@@ -20,8 +20,8 @@
       return $http.get('/profile');
     }
 
-    function update(user){
-      return $http.post('/profile', user);
+    function update(client){
+      return $http.post('/profile', client);
     }
 
     return {register:register, login:login, logout:logout, show:show, update:update};

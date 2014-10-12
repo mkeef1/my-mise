@@ -11,29 +11,34 @@
     $scope.yRecipe = {};
     $scope.recipe.dateAdded = new Date();
 
-    Recipe.show().then(function(response){
+    Recipe.show($scope.recipes).then(function(response){
       $scope.recipes = response.data.recipes;
     });
 
-    Recipe.showYum().then(function(response){
+    Recipe.showYum($scope.yums).then(function(response){
       $scope.yRecipes = response.data.yums;
     });
 
     $scope.toggleyRecipe = function(){
       $scope.hideyRecipes = !!!$scope.hideyRecipes;
+      $scope.hideRecipes = false;
+      $scope.hideRecipeForm = false;
     };
 
     $scope.toggleRecipe = function(){
       $scope.hideRecipes = !!!$scope.hideRecipes;
+      $scope.hideyRecipes = false;
+      $scope.hideRecipeForm = false;
     };
 
     $scope.toggleRecipeForm = function(){
       $scope.hideRecipeForm = !!!$scope.hideRecipeForm;
+      $scope.hideyRecipes = false;
+      $scope.hideRecipes = false;
     };
 
     $scope.addYum = function(){
       Recipe.addYum($scope.yRecipe).then(function(response){
-        //debugger;
         $scope.yRecipes.push(response.data.yum);
         $scope.yRecipe = {};
       });
@@ -43,8 +48,9 @@
       Recipe.addRecipe($scope.recipe).then(function(response){
         $scope.recipes.push(response.data.recipe);
         $scope.recipe = {};
+        $scope.hideyRecipes = false;
+        $scope.hideRecipes = false;
       });
     };
   }]);
 })();
-
