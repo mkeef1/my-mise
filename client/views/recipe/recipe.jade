@@ -1,3 +1,20 @@
 {{title}}
 
-h2 {{recipe.name}}
+h1 {{recipe.name}}
+
+.row
+  .col-xs-6
+    h3 Difficulty: {{recipe.difficulty}}
+    h3 Time Required: Prep: &nbsp {{recipe.prepTime}} &nbsp mins., &nbsp Cook: &nbsp{{recipe.cookTime}} &nbsp mins.
+    h3 Servings: {{recipe.numServings}}
+  .col-xs-6
+    img(ng-src='{{recipe.photo}}')
+.row
+  .col-xs-6
+    h3 Ingredients
+    ul
+      li(ng-repeat='i in recipe.ingredients track by $index') {{i}}
+  .col-xs-6
+    h3 Directions
+    ol
+      li(ng-repeat='d in recipe.directions track by $index') {{d}}
