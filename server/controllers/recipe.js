@@ -19,3 +19,9 @@ exports.add = function(req, res){
     res.send({recipe:recipe});
   });
 };
+
+exports.all = function(req, res){
+  Recipe.findAll(function(err, recipes){
+    res.send({recipes:recipes});
+  });
+};
