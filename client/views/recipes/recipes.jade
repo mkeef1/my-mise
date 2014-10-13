@@ -57,19 +57,15 @@ h2.font Recipes
         label(for='notes') Notes
         textarea.form-control#notes(required, ng-model='recipe.notes', type='textarea', name='notes', placeholder='Don\'t over cook the potatoes!!')
         button(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
-.row#yRecipes()
-  .col-xs-6(ng-show='hideyRecipes')
+.row
+  .col-xs-12(ng-show='hideyRecipes')
     div(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}')
 
-  .col-xs-6(ng-show='hideRecipes')
-    div#recipes(ng-repeat='r in recipes')
+.row
+  .col-xs-12(ng-show='hideRecipes')
+    #recipes(ng-repeat='r in recipes')
       h5: a(href='/#/recipe/{{r._id}}') {{r.name}}
       h6 {{r.dateAdded | date:'MMM dd, yyyy'}}
       img(ng-src='{{r.photo}}')
 
-.row(ng-show='hideRecipeInfo')
-  .col-xs-12
-    h3 {{recipe.name}}
-    img(ng-src='{{recipe.photo}}')
-    h2 {{recipe.difficulty}}
 
