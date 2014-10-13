@@ -20,6 +20,7 @@ function Recipe(o, userId){
   this.tags = o.tags;
   this.tags = _.compact(this.tags);
   this.notes = o.notes;
+  this.reviews = [];
 }
 
 Object.defineProperty(Recipe, 'collection', {
@@ -28,11 +29,7 @@ Object.defineProperty(Recipe, 'collection', {
 
 Recipe.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Recipe.collection.findOne({_id:_id}, function(err, obj){
-    var recipe = Object.create(Recipe.prototype);
-    recipe = _.extend(recipe, obj);
-    cb(err, recipe);
-  });
+  Recipe.collection.findOne({_id:_id}, cb);
 };
 
 Recipe.create = function(o, userId, cb){
@@ -53,5 +50,7 @@ Recipe.findAllByUserId = function(userId, cb){
   var id = Mongo.ObjectID(userId);
   Recipe.collection.find({userId:id}).toArray(cb);
 };
+
+
 module.exports = Recipe;
 

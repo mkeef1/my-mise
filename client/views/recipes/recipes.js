@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('my-mise')
-  .controller('RecipesCtrl', ['$scope', 'Recipe', function($scope, Recipe){
+  .controller('RecipesCtrl', ['$scope', '$routeParams', 'Recipe', function($scope, $routeParams, Recipe){
     $scope.recipeCategories = ['Breakfast', 'Lunch', 'Dinner', 'Side', 'Condiment', 'Beverage'];
     $scope.difficulties = ['Easy', 'Medium', 'Hard'];
     $scope.recipes = [];
@@ -21,19 +21,27 @@
 
     $scope.toggleyRecipe = function(){
       $scope.hideyRecipes = !!!$scope.hideyRecipes;
+      $scope.hideRecipes = false;
+      $scope.hideRecipeForm = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.toggleRecipe = function(){
       $scope.hideRecipes = !!!$scope.hideRecipes;
+      $scope.hideyRecipes = false;
+      $scope.hideRecipeForm = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.toggleRecipeForm = function(){
       $scope.hideRecipeForm = !!!$scope.hideRecipeForm;
+      $scope.hideyRecipes = false;
+      $scope.hideRecipes = false;
+      $scope.hideRecipeInfo = false;
     };
 
     $scope.addYum = function(){
       Recipe.addYum($scope.yRecipe).then(function(response){
-        //debugger;
         $scope.yRecipes.push(response.data.yum);
         $scope.yRecipe = {};
       });
@@ -43,8 +51,23 @@
       Recipe.addRecipe($scope.recipe).then(function(response){
         $scope.recipes.push(response.data.recipe);
         $scope.recipe = {};
+        $scope.hideyRecipes = false;
+        $scope.hideRecipes = false;
+        $scope.hideRecipeInfo = false;
       });
     };
+
+ /*   $scope.showInfo = function(){
+      Recipe.getInfo($scope.recipe).then(function(response){
+        $scope.recipe = response.data.recipe;
+        debugger;
+        console.log($scope.recipe);
+        $scope.hideRecipeInfo = !!!$scope.hideRecipeInfo;
+        $scope.hideyRecipes = false;
+        $scope.hideRecipes = false;
+        $scope.hideRecipeForm = false;
+        $scope.recipe = {};
+      });
+    };*/
   }]);
 })();
-

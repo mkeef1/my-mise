@@ -7,8 +7,8 @@ var morgan         = require('morgan'),
     RedisStore     = require('connect-redis')(session),
     debug          = require('../lib/debug'),
     security       = require('../lib/security'),
-    home           = require('../controllers/home'),
     recipe         = require('../controllers/recipe'),
+    home           = require('../controllers/home'),
     yum            = require('../controllers/yum'),
     users          = require('../controllers/users');
 
@@ -34,6 +34,8 @@ module.exports = function(app, express){
   app.get('/recipes/yRecipes', yum.index);
   app.post('/recipes/yRecipes', yum.add);
   app.post('/recipes/recipes', recipe.add);
+  app.get('/recipe/:recipeId', recipe.info);
+  app.get('/all', recipe.all);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

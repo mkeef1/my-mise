@@ -2,10 +2,10 @@
   'use strict';
 
   angular.module('my-mise')
-  .factory('Home', ['$http', function($http){
+  .factory('All', ['$http', function($http){
 
     function getAll(){
-      return $http.get('/home');
+      return $http.get('/all');
     }
 
     return {getAll:getAll};

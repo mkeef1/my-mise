@@ -1,12 +1,9 @@
 'use strict';
 
-var Mongo  = require('mongodb'),
-    _      = require('underscore');
+var Mongo  = require('mongodb');
 
-function Review(recipeOwnerId, reviewerId, recipeId, opinion){
-  this.recipeOwnerId = recipeOwnerId;
-  this.reviewerId = reviewerId;
-  this.recipeId = recipeId;
+function Review(recipeId, opinion){
+  this.recipeId = Mongo.ObjectID(recipeId);
   this.rating = opinion.rating;
   this.comments = opinion.comments;
   this.date = new Date();
@@ -16,22 +13,16 @@ Object.defineProperty(Review, 'collection', {
   get: function(){return global.mongodb.collection('reviews');}
 });
 
-Review.add = function(recipeOwnerId, reviewerId, recipeId, opinion, cb){
-  var r = new Review(recipeOwnerId, reviewerId, recipeId, opinion);
+Review.add = function(recipeId, opinion, cb){
+  var rid = Mongo.ObjectID(recipeId),
+      r = new Review(rid, opinion);
   Review.collection.save(r, cb);
 };
 
-Review.findByRecipeId = function(recipeId, cb){
-  var _id = Mongo.ObjectID(recipeId);
-  Review.collection.findOne({_id:_id}, function(err, obj){
-    cb(err, _.extend(Review.prototype, obj));
-  });
+Review.findAll = function(recipeId, cb){
+  Review.collection.find({recipeId:recipeId}).toArray(cb);
 };
 
-/*
-Recipe.findAllByUserId = function(userId, cb){
-  var id = Mongo.ObjectID(userId);
-  Recipe.collection.find({userId:id}).toArray(cb);
-};*/
+
 module.exports = Review;
 

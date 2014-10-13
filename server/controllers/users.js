@@ -44,7 +44,7 @@ exports.show = function(req, res){
 exports.update = function(req, res){
   User.findById(req.user._id, function(err, client){
     client.update(req.body, function(err, client){
-      res.send({client:client});
+      res.send(client);
     });
   });
 };

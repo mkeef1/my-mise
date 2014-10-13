@@ -10,7 +10,7 @@
     });
 
     $scope.update = function(){
-      User.update($scope.user).then(function(response){
+      User.update($scope.client).then(function(response){
         $scope.client = response.data.client;
       });
     };
