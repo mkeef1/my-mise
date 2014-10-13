@@ -12,7 +12,7 @@ br
 
 .row
   form#recipeForm(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
-    .col-xs-4
+    .col-xs-3
       .form-group
         input.form-control#date(ng-model='recipe.dateAdded', type='hidden', name='date', required)
       .form-group
@@ -24,27 +24,19 @@ br
       .form-group
         label(for='directions') Directions
         input.form-control#directions(required, ng-model='recipe.directions', type='text', name='directions', placeholder='clean, cook, enjoy')
+    br
+    .col-xs-3
       .form-group
         label(for='photo') Picture
-        input.form-control#photo(required, ng-model='recipe.photo', type='text', name='photo', placeholder='http://examplepic.png')
-    .col-xs-4
+        input.form-control(required, ng-model='recipe.photo', type='text', name='photo', placeholder='http://examplepic.png')
       .form-group
         label(for='prepTime') Prep Time Required(minutes)
         input.form-control#prepTime(required, ng-model='recipe.prepTime', type='number', name='prepTime', placeholder='10')
       .form-group
         label(for='cookTime') Cook Time Required(minutes)
         input.form-control#cookTime(required, ng-model='recipe.cookTime', type='number', name='cookTime', placeholder='20')
-      .form-group
-        label(for='description') Description
-        textarea.form-control#description(ngRequired='true', ng-model='recipe.description', type='textare', name='description', placeholder='Really Good!  Easy and has great flavor.')
-      .form-group
-        label(for='category') Category
-        select.form-control#category(required, ng-model='recipe.category', type='dropdown', name='category')
-          option(ng-repeat='c in recipeCategories') {{c}}
-      .form-group
-        label(for='tools') Tools Needed
-        input.form-control#tools(required, ng-model='recipe.tools', type='text', name='tools', placeholder='knife, oven, food processor')
-    .col-xs-4
+    br
+    .col-xs-3
       .form-group
         label(for='difficulty') Difficulty
         select.form-control#difficulty(required, ng-model='recipe.difficulty', type='dropdown', name='difficulty')
@@ -52,12 +44,6 @@ br
       .form-group
         label(for='servings') Number of Servings
         input.form-control#servings(required, ng-model='recipe.numServings', type='number', name='servings', placeholder='2')
-      .form-group
-        label(for='tags') Tags
-        textarea.form-control#tags(required, ng-model='recipe.tags', type='textarea', name='tags', placeholder='potatoes, cream, butter')
-      .form-group
-        label(for='notes') Notes
-        textarea.form-control#notes(required, ng-model='recipe.notes', type='textarea', name='notes', placeholder='Don\'t over cook the potatoes!!')
         button(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
 .row
   .col-xs-12(ng-show='hideyRecipes')

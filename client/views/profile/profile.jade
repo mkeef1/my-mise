@@ -8,7 +8,7 @@ h3 Profile
         input.form-control#username(type='username', name='username', ng-model='client.username', required)
       .form-group
         label(for='photo') Photo
-        input.form-control#photo(type='photo', name='photo', ng-model='client.photo', required)
+        input.form-control(type='text', name='photo', ng-model='client.photo', required)
       button.btn.btn-primary(type='submit', ng-show='profileForm.$valid', ng-click='update()') Update Profile
   .col-xs-3
   .col-xs-3
