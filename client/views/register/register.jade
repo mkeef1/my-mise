@@ -9,12 +9,6 @@ h3 Register
       .form-group
         label(for='password') Password
         input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
-      .form-group
-        label(for='username') Username
-        input.form-control(type='username', name='username', ng-model='user.username', required, ng-minlength='3')
-      .form-group
-        label(for='photo') Photo (URL)
-        input.form-control(type='photo', name='photo', ng-model='user.photo')
       button.btn.btn-primary(ng-show='userForm.$valid', ng-click='register()') Register
   .col-xs-9
 

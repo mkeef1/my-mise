@@ -20,10 +20,10 @@ br
         input.form-control#name(required, ng-model='recipe.name', type='text', name='name', placeholder='Mashed Potatoes')
       .form-group
         label(for='ingredients') Ingredients
-        input.form-control#ingredients(required, ng-model='recipe.ingredients', type='text', name='ingredients', placeholder='milk, flour, eggs')
+        textarea.form-control#ingredients(required, ng-model='recipe.ingredients', type='text', name='ingredients', placeholder='milk, flour, eggs')
       .form-group
         label(for='directions') Directions
-        input.form-control#directions(required, ng-model='recipe.directions', type='text', name='directions', placeholder='clean, cook, enjoy')
+        textarea.form-control#directions(required, ng-model='recipe.directions', type='text', name='directions', placeholder='clean, cook, enjoy')
     br
     .col-xs-3
       .form-group
@@ -44,10 +44,10 @@ br
       .form-group
         label(for='servings') Number of Servings
         input.form-control#servings(required, ng-model='recipe.numServings', type='number', name='servings', placeholder='2')
-        button(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
+        button.btn.btn-success(type='submit', ng-show='recipeForm.$valid', ng-click='addRecipe()') Add!
 .row
   .col-xs-12(ng-show='hideyRecipes')
-    div(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}')
+    div#recipes(mk-recipe, ng-repeat='yRecipe in yRecipes', title='{{yRecipe.name}}')
 
 .row
   .col-xs-12(ng-show='hideRecipes')
