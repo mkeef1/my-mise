@@ -34,7 +34,7 @@ module.exports = function(app, express){
   app.get('/recipes/yRecipes', yum.index);
   app.post('/recipes/yRecipes', yum.add);
   app.post('/recipes/recipes', recipe.add);
-  app.get('/recipes/recipes/:recipeId', recipe.info);
+  app.get('/recipe/:recipeId', recipe.info);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

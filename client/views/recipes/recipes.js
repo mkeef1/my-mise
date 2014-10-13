@@ -57,16 +57,17 @@
       });
     };
 
-    $scope.showInfo = function(){
-      Recipe.getInfo($routeParams.id).then(function(response){
+ /*   $scope.showInfo = function(){
+      Recipe.getInfo($scope.recipe).then(function(response){
         $scope.recipe = response.data.recipe;
         debugger;
+        console.log($scope.recipe);
         $scope.hideRecipeInfo = !!!$scope.hideRecipeInfo;
         $scope.hideyRecipes = false;
         $scope.hideRecipes = false;
         $scope.hideRecipeForm = false;
         $scope.recipe = {};
       });
-    };
+    };*/
   }]);
 })();

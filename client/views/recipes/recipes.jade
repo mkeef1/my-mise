@@ -63,9 +63,8 @@ h2.font Recipes
 
   .col-xs-6(ng-show='hideRecipes')
     div#recipes(ng-repeat='r in recipes')
-      h5 {{r.name}}
+      h5: a(href='/#/recipe/{{r._id}}') {{r.name}}
       h6 {{r.dateAdded | date:'MMM dd, yyyy'}}
-      button(type='submit', ng-click='showInfo()') Details
       img(ng-src='{{r.photo}}')
 
 .row(ng-show='hideRecipeInfo')

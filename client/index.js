@@ -10,7 +10,7 @@
     .when('/logout',   {templateUrl:'/views/logout/logout.html',     controller:'LogoutCtrl'})
     .when('/profile',  {templateUrl:'/views/profile/profile.html',   controller:'ProfileCtrl'})
     .when('/recipes',  {templateUrl:'/views/recipes/recipes.html',   controller:'RecipesCtrl'})
-    .when('/recipes/recipes/:id',  {templateUrl:'/views/recipes/recipes.html',   controller:'RecipesCtrl'})
+    .when('/recipe/:id',   {templateUrl:'/views/recipe/recipe.html',    controller:'RecipeCtrl'})
     .otherwise({redirectTo:'/'});
 
     $httpProvider.interceptors.push('HttpInterceptor');

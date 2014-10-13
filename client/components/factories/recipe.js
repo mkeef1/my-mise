@@ -20,11 +20,7 @@
       return $http.post('/recipes/recipes', Recipe);
     }
 
-    function getInfo(recipeId){
-      return $http.get('/recipes/recipes/' + recipeId);
-    }
-
-    return {show:show, addYum:addYum, showYum:showYum, addRecipe:addRecipe, getInfo:getInfo};
+    return {show:show, addYum:addYum, showYum:showYum, addRecipe:addRecipe};
   }]);
 })();
 
