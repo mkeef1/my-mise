@@ -8,7 +8,8 @@
 
     Recipeid.show($routeParams.id).then(function(response){
       $scope.recipe = response.data.recipe;
-      debugger;
+      $scope.recipe.ingredients = $scope.recipe.ingredients.split(',');
+      $scope.recipe.directions = $scope.recipe.directions.split(',');
     });
 
   }]);
