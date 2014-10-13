@@ -1,12 +1,14 @@
-h2.font Recipes
 .row
   .col-xs-6
-    input(type='text', ng-model='yRecipe.name', placeholder='Yummly')
-    button(ng-click='addYum()') Add Recipe
-    button(ng-click='toggleyRecipe()') Show/Hide Recipes
+    h3 Yummly Recipes
+    input(type='text', ng-model='yRecipe.name', placeholder='Search Yummly')
+    button.btn.btn-primary(ng-click='addYum()') Add Recipe
+    button.btn.btn-success(ng-click='toggleyRecipe()') Yummly
   .col-xs-6
-    button(ng-click='toggleRecipeForm()') Add Recipe
-    button(ng-click='toggleRecipe()') Show/Hide Recipes
+    h3 My Recipes
+    button.btn.btn-primary(ng-click='toggleRecipeForm()') Add Recipe
+    button.btn.btn-success(ng-click='toggleRecipe()') Mine
+br
 
 .row
   form#recipeForm(role='form', novalidate, ng-show='hideRecipeForm', name='recipeForm')
