@@ -1,14 +1,15 @@
-{{title}}
-
 h1 {{recipe.name}}
-
 .row
   .col-xs-6
-    h3 Difficulty: {{recipe.difficulty}}
-    h3 Time Required: Prep: &nbsp {{recipe.prepTime}} &nbsp mins., &nbsp Cook: &nbsp{{recipe.cookTime}} &nbsp mins.
-    h3 Servings: {{recipe.numServings}}
+    h3 Difficulty:
+    p {{recipe.difficulty}}
+    h3 Time Required:
+    p Prep: &nbsp {{recipe.prepTime}} &nbsp mins.
+    p Cook: &nbsp{{recipe.cookTime}} &nbsp mins.
+    h3 Servings:
+    p {{recipe.numServings}}
   .col-xs-6
-    img(ng-src='{{recipe.photo}}')
+    img#photo(ng-src='{{recipe.photo}}')
 .row
   .col-xs-6
     h3 Ingredients

@@ -8,6 +8,7 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     security       = require('../lib/security'),
     recipe         = require('../controllers/recipe'),
+    home           = require('../controllers/home'),
     yum            = require('../controllers/yum'),
     users          = require('../controllers/users');
 
@@ -22,7 +23,7 @@ module.exports = function(app, express){
   app.use(security.authenticate);
   app.use(debug.info);
 
-  app.get('/home', recipe.all);
+  app.get('/home', home.index);
   app.post('/register', users.register);
   app.post('/login', users.login);
 
@@ -34,6 +35,7 @@ module.exports = function(app, express){
   app.post('/recipes/yRecipes', yum.add);
   app.post('/recipes/recipes', recipe.add);
   app.get('/recipe/:recipeId', recipe.info);
+  app.get('/all', recipe.all);
   app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');

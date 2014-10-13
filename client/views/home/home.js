@@ -9,8 +9,6 @@
 
     Home.getAll().then(function(response){
       $scope.recipes = response.data.recipes;
-      console.log($scope.recipes);
-
     });
   }]);
 })();

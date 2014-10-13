@@ -1,0 +1,7 @@
+{{title}}
+.row
+  .col-xs-12
+    div#recipes(ng-repeat='r in recipes')
+      h3: a(href='/#/recipe/{{r._id}}') {{r.name}}
+      h2 {{r.dateAdded | date:'MMM dd, yyyy'}}
+      img(ng-src='{{r.photo}}')
